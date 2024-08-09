@@ -140,6 +140,7 @@ const NoteCard = ({ note }) => {
           ref={textAreaRef}
           style={{ color: colors.colorText }}
           defaultValue={body}
+          placeholder="add note"
         ></textarea>
       </div>
     </div>
