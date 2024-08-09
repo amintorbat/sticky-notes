@@ -35,6 +35,7 @@ const NoteCard = ({ note }) => {
       setZIndex(cardRef.current);
 
       document.addEventListener("mousemove", mouseMove);
+      document.addEventListener("touchmove", mouseMove);
       document.addEventListener("mouseup", mouseUp);
       setSelectedNote(note);
     }
