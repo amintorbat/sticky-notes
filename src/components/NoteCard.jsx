@@ -35,7 +35,6 @@ const NoteCard = ({ note }) => {
       setZIndex(cardRef.current);
 
       document.addEventListener("mousemove", mouseMove);
-      document.addEventListener("touchstart", mouseMove);
       document.addEventListener("mouseup", mouseUp);
       setSelectedNote(note);
     }
@@ -56,7 +55,6 @@ const NoteCard = ({ note }) => {
 
   const mouseUp = async () => {
     document.removeEventListener("mousemove", mouseMove);
-    document.removeEventListener("touchstart", mouseMove);
     document.removeEventListener("mouseup", mouseUp);
 
     const newPosition = setNewOffset(cardRef.current);
@@ -86,6 +84,20 @@ const NoteCard = ({ note }) => {
     }, 2000);
   };
 
+  const textAlign = () => {
+    const textArea = document.querySelector("textarea");
+    if (
+      textArea.style.textAlign === "left" &&
+      textArea.style.direction === "ltr"
+    ) {
+      textArea.style.textAlign = "right";
+      textArea.style.direction = "rtl";
+    } else {
+      textArea.style.textAlign = "left";
+      textArea.style.direction = "ltr";
+    }
+  };
+
   return (
     <div
       ref={cardRef}
@@ -104,6 +116,9 @@ const NoteCard = ({ note }) => {
         }}
       >
         <DeleteButton noteId={note.$id} />
+        <i className="text-icon" onClick={textAlign}>
+          T
+        </i>
 
         {saving && (
           <div className="card-saving">
