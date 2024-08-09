@@ -35,7 +35,7 @@ const NoteCard = ({ note }) => {
       setZIndex(cardRef.current);
 
       document.addEventListener("mousemove", mouseMove);
-      document.addEventListener("touchmove", mouseMove);
+      document.addEventListener("touchstart", mouseMove);
       document.addEventListener("mouseup", mouseUp);
       setSelectedNote(note);
     }
@@ -56,7 +56,7 @@ const NoteCard = ({ note }) => {
 
   const mouseUp = async () => {
     document.removeEventListener("mousemove", mouseMove);
-    document.removeEventListener("touchmove", mouseMove);
+    document.removeEventListener("touchstart", mouseMove);
     document.removeEventListener("mouseup", mouseUp);
 
     const newPosition = setNewOffset(cardRef.current);
