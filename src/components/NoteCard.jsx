@@ -56,6 +56,7 @@ const NoteCard = ({ note }) => {
 
   const mouseUp = async () => {
     document.removeEventListener("mousemove", mouseMove);
+    document.removeEventListener("touchmove", mouseMove);
     document.removeEventListener("mouseup", mouseUp);
 
     const newPosition = setNewOffset(cardRef.current);
